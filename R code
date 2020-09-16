@@ -1,0 +1,9 @@
+#Install R packages
+library(tidyr)
+library(tidyselect)
+library(tidytext)
+library(tidyverse)
+library(tokenizers)
+library(dplyr)
+library(tm)
+library(syuzhet)
