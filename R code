@@ -7,3 +7,23 @@ library(tokenizers)
 library(dplyr)
 library(tm)
 library(syuzhet)
+
+
+#Convert your data into a character vector
+
+it_reviews <- Italian_reviews_rotterdam %>%
+    group_by(Source) %>%
+    mutate(linenumber = row_number(),
+           word = `full review`) %>%
+    ungroup()
+
+it_reviews
+
+#Tidying the reviews or creating one-token-per-row format
+
+library(tidytext)
+
+it_reviews <- original_books %>%
+  unnest_tokens(word, text)
+
+it_reviews
