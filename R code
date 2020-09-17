@@ -86,6 +86,34 @@ it_reviews %>%
 #Don't forget to save the image of your wordclouds!
 
 #You've just performed a basic task in text analysis! Word frequency can tell you a lot about a text.
+
+
+#Now let's compare the proportion of specific words in chinese restaurant reviews versus italian restaurant reviews
+
+frequency <- bind_rows(mutate(it_reviews, cuisine = "italian"),
+                       mutate(cn_reviews, cuisine = "chinese")) %>% 
+    count(cuisine, word) %>%
+    group_by(cuisine) %>%
+    mutate(proportion = n / sum(n)) %>% 
+    select(-n) %>% 
+    spread(cuisine, proportion) %>% 
+    gather(cuisine, proportion, `chinese`)
+    
+#Now let's plot the similarities
+
+library(scale)
+
+ggplot(frequency, aes(x = proportion, y = `italian`, color = abs(`italian` - proportion))) +
+  geom_abline(color = "gray40", lty = 2) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.3, height = 0.3) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 1.5) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  scale_color_gradient(limits = c(0, 0.001), low = "darkslategray4", high = "gray75") +
+  facet_wrap(~cuisine, ncol = 2) +
+  theme(legend.position="none") +
+  labs(y = "italian restaurants", x = "chinese restaurants")
+
   
 #Now on to Sentiment analysis
   
@@ -128,17 +156,15 @@ ggplot(review_sentiments, aes(index, sentiment, fill = cuisine)) +
   facet_wrap(~cuisine, ncol = 2, scales = "free_x")
   
   
-#Now plot trust using the NRC lexicon
+#Now plot disgust using the NRC lexicon
 
-
-it_sentiments <- it_reviews %>%
+review_sentiments_trust <- reviews %>%
   inner_join(get_sentiments("nrc")) %>%
-  count(Source, index = linenumber %/% 5, sentiment) %>%
+  count(cuisine, index = linenumber %/% 5, sentiment) %>%
   spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = trust)
+  mutate(sentiment = disgust)
  
- 
- ggplot(it_sentiments, aes(index, sentiment, fill = cuisine)) +
+ ggplot(review_sentiments_trust, aes(index, sentiment, fill = cuisine)) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~cuisine, ncol = 2, scales = "free_x")
   
