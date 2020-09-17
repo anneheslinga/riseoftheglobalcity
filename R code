@@ -7,8 +7,6 @@ library(tidytext)
 library(tidyverse)
 library(tokenizers)
 library(dplyr)
-library(tm)
-library(syuzhet)
 
 
 #Convert your data into a character vector
