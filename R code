@@ -23,6 +23,8 @@ library(tokenizers)
 library(dplyr)
 library(ggplot)
 library(readxl)
+library(wordcloud)
+library(scale)
 
 #Convert your data into a character vector
 
