@@ -1,13 +1,26 @@
 #Code should be performed in the following order.
 
-#Install R packages
+
+#Download R packages from CRAN. Be sure that you are connected to the internet for this step.
+
+install.package("tidyr")
+install.package("tidyselect")
+install.packages("tidytext")
+install.packages("tidyverse")
+install.packages("tokenizers")
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("readxl")
+
+#Load R packages
 library(tidyr)
 library(tidyselect)
 library(tidytext)
 library(tidyverse)
 library(tokenizers)
 library(dplyr)
-
+library(ggplot)
+library(readxl)
 
 #Convert your data into a character vector
 
