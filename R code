@@ -3,14 +3,16 @@
 
 #Download R packages from CRAN. Be sure that you are connected to the internet for this step.
 
-install.package("tidyr")
-install.package("tidyselect")
+install.packages("tidyr")
+install.packages("tidyselect")
 install.packages("tidytext")
 install.packages("tidyverse")
 install.packages("tokenizers")
 install.packages("dplyr")
 install.packages("ggplot2")
 install.packages("readxl")
+install.packages("wordcloud")
+install.packages("scale")
 
 #Load R packages
 library(tidyr)
