@@ -25,3 +25,20 @@ dutch_reviews <- dutch_reviews %>%
 
 dutch_reviews %>%
     count(word, sort = TRUE)
+    
+#To perform a sentiment analysis, let's use some packages outside of the tidytext universe.
+
+install.packages("tm")
+install.packages("syuzhet")
+install.packages("SentimentAnalysis")
+
+library(tm)
+library(syuzhet)
+library(SentimentAnalysis)
+
+dutch_review_sentiments <- insert_your_file_name$intsert_full_review_column_name
+
+dutch_review_sentiments_2 <- as.data.frame(colSums(dutch_review_sentiments))
+dutch_review_sentiments_2 <- rownames_to_column(dutch_review_sentiments_2) 
+colnames(dutch_review_sentiments_2) <- c("emotion", "count")
+ggplot(sent3, aes(x = emotion, y = count, fill = emotion)) + geom_bar(stat = "identity") + theme_minimal() + theme(legend.position="none", panel.grid.major = element_blank()) + labs( x = "Emotion", y = "Total Count") + ggtitle("Sentiment of Dutch Language Reviews") + theme(plot.title = element_text(hjust=0.5))
