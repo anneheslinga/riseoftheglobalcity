@@ -1,0 +1,27 @@
+#To analyse reviews in Dutch language, import your data into R in the same manner you would with English language reviews.
+# Where you see "insert_your_file_name" and "insert column name" please insert the corresponding item from your excel sheet.
+
+dutch_reviews <- insert_your_file_name$intsert_full_review_column_name
+
+dutch_reviews <- tibble(text = dutch_reviews)
+
+dutch_reviews
+
+
+#Import the .txt file of Dutch stop words. Be sure to select 'import dataset > from text (base)'
+#Then lable the Dutch stop words as custom stop words
+
+custom_stop_words <- dutch.stop.words
+
+#Clean and perform a word count on the Dutch reviews
+
+library(dplyr)
+
+dutch_reviews <- dutch_reviews %>%
+    unnest_tokens(word, text)
+c()
+dutch_reviews <- dutch_reviews %>%
+    anti_join(custom_stop_words)
+
+dutch_reviews %>%
+    count(word, sort = TRUE)
