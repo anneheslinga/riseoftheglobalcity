@@ -103,8 +103,22 @@ reviews %>%
   inner_join(nrc_disgust) %>%
   count(word, sort = TRUE)
   
+  
+#Plot word counts for joy (you can only do this once you hae created a character vector for a sentiment, as we did for joy and disgust in the previous two steps).
+#Change the number in the filter() function to plot more or less words.
+
+reviews %>%
+    inner_join(nrc_joy) %>%
+    count(word, sort = TRUE) %>%
+    filter(n > 50) %>%
+    mutate(word = reorder(word, n)) %>%
+    ggplot(aes(word, n)) +
+    geom_col() +
+    xlab(NULL) +
+    coord_flip()
+
  
-#Plot positive and negative emotions by creating an index with the Bing lexicon
+#Plot positive and negative emotions over time by creating an index with the Bing lexicon
 
 #Create the index
 library(tidyr)
