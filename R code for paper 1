@@ -10,6 +10,8 @@ install.packages("ggplot2")
 install.packages("readxl")
 install.packages("wordcloud")
 install.packages("scale")
+install.packages("devtools")
+install.packages("remotes")
 
 #Load R packages
 library(tidyr)
@@ -22,6 +24,8 @@ library(ggplot2)
 library(readxl)
 library(wordcloud)
 library(scale)
+library(devtools)
+library(remotes)
 
 #Convert your data into a character vector. Use your own file name in place of 'insert_your_file_name'.
 
