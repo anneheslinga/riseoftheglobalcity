@@ -1,3 +1,33 @@
+#Install and load packages.
+
+install.packages("tidyr")
+install.packages("tidyselect")
+install.packages("tidytext")
+install.packages("tidyverse")
+install.packages("tokenizers")
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("readxl")
+install.packages("wordcloud")
+install.packages("scale")
+install.packages("devtools")
+install.packages("remotes")
+
+#Load R packages
+library(tidyr)
+library(tidyselect)
+library(tidytext)
+library(tidyverse)
+library(tokenizers)
+library(dplyr)
+library(ggplot2)
+library(readxl)
+library(wordcloud)
+library(scale)
+library(devtools)
+library(remotes)
+
+
 #To analyse reviews in Dutch language, import your data into R in the same manner you would with English language reviews.
 # Where you see "insert_your_file_name" and "insert column name" please insert the corresponding item from your excel sheet. R will add the '' marks automatically if you select the name of the intended column from the R pop-up.
 
