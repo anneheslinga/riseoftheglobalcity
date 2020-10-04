@@ -1,14 +1,14 @@
 #To analyse reviews in Dutch language, import your data into R in the same manner you would with English language reviews.
-# Where you see "insert_your_file_name" and "insert column name" please insert the corresponding item from your excel sheet.
+# Where you see "insert_your_file_name" and "insert column name" please insert the corresponding item from your excel sheet. R will add the '' marks automatically if you select the name of the intended column from the R pop-up.
 
-dutch_reviews <- insert_your_file_name$intsert_full_review_column_name
+dutch_reviews <- insert_your_file_name$'insert_full_review_column_name'
 
 dutch_reviews <- tibble(text = dutch_reviews)
 
 dutch_reviews
 
 
-#Import the .txt file of Dutch stop words. Be sure to select 'import dataset > from text (base)'
+#Import the .txt file of Dutch stop words. Be sure to select 'import dataset > from text (base)'. Use the default settings in the pop-up window for this import.
 #Then lable the Dutch stop words as custom stop words
 
 custom_stop_words <- dutch.stop.words
@@ -36,9 +36,9 @@ library(tm)
 library(syuzhet)
 library(SentimentAnalysis)
 
-dutch_review_sentiments <- insert_your_file_name$intsert_full_review_column_name
+dutch_review_sentiments <- get_nrc_sentiment(insert_your_file_name$insert_full_review_column_name, language = "dutch")
 
 dutch_review_sentiments_2 <- as.data.frame(colSums(dutch_review_sentiments))
 dutch_review_sentiments_2 <- rownames_to_column(dutch_review_sentiments_2) 
 colnames(dutch_review_sentiments_2) <- c("emotion", "count")
-ggplot(sent3, aes(x = emotion, y = count, fill = emotion)) + geom_bar(stat = "identity") + theme_minimal() + theme(legend.position="none", panel.grid.major = element_blank()) + labs( x = "Emotion", y = "Total Count") + ggtitle("Sentiment of Dutch Language Reviews") + theme(plot.title = element_text(hjust=0.5))
+ggplot(dutch_review_sentiments_2, aes(x = emotion, y = count, fill = emotion)) + geom_bar(stat = "identity") + theme_minimal() + theme(legend.position="none", panel.grid.major = element_blank()) + labs( x = "Emotion", y = "Total Count") + ggtitle("Sentiment of Dutch Language Reviews") + theme(plot.title = element_text(hjust=0.5))
