@@ -12,7 +12,6 @@ install.packages("dplyr")
 install.packages("ggplot2")
 install.packages("readxl")
 install.packages("wordcloud")
-install.packages("scale")
 
 #Load R packages
 library(tidyr)
@@ -21,10 +20,10 @@ library(tidytext)
 library(tidyverse)
 library(tokenizers)
 library(dplyr)
-library(ggplot)
+library(ggplot 2)
 library(readxl)
 library(wordcloud)
-library(scale)
+
 
 #Convert your data into a character vector
 
