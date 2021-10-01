@@ -20,7 +20,7 @@ library(tidytext)
 library(tidyverse)
 library(tokenizers)
 library(dplyr)
-library(ggplot 2)
+library(ggplot2)
 library(readxl)
 library(wordcloud)
 
